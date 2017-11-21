@@ -1,0 +1,5 @@
+1.403 Forbidden while accessing
+http://blog.csdn.net/happyteafriends/article/details/11554043
+
+2.上面修改后报错：gnome-ssh-askpass Gtk-WARNING cannot open display
+unset SSH_ASKPASS
