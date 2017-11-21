@@ -1,0 +1,10 @@
+#!/bin/bash
+
+count=`ps -ef|grep python|grep run|wc -l`
+if [ $count -gt 0 ]; then
+	echo "cmdb is running"
+else
+	source /opt/env/bin/activate
+	/usr/bin/nohup python /opt/roncoo-cmdb/devops/runweb.py &
+	/usr/bin/nohup python /opt/roncoo-cmdb/devops/runapi.py &
+fi
