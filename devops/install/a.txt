@@ -1,12 +1,12 @@
 Flask 
 Flask-Bootstrap 
-Flask-Moment
-Flask-Script 
-Flask-Migrate
-Flask-SQLAlchemy 
-Flask-WTF 
-MySQL-python 
+Flask-Moment    #  本地化日期和时间
+Flask-Script    # Flask-Script 为Flask程序添加了一个命令行解析， 自带了一组常用选项，而且还支持自定义命令。
+Flask-Migrate   # 管理升级迁移数据库
+Flask-SQLAlchemy    # 数据库管理
+Flask-WTF   # 允许用户在Flask应用中使用脍炙人口的WTForms包。这个包使得定义表单和处理表单功能变得轻松。
+MySQL-python    # 是封装了MySQL C驱动的Python驱动。
 requests
 Flask-JSONRPC
 psutil
-zabbix_client
+zabbix_client   # 不用我们自己去写登录函数，只要在模块开始指定用户名密码即可，方便很多。

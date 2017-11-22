@@ -407,7 +407,7 @@ function list(){
        console.log(data)   //Object {count: 3, code: 0, users: Array[3]}
        if (data['code']== 0){       
            var str = ''
-           $.each(data.result,function(k,v){   
+           $.each(data.result,function(k,v){            <!-- 遍历 -->
                str +='<tr class="odd gradeX">'+  
 	       '<td>'+v['hostname']+'</td>'+
                '<td>'+v['ip']+'</td>'+
@@ -732,7 +732,7 @@ $("tbody").on('click','.update-btn',function(){
 	   upidclist()
            upcabinetlist()
           $('#updateModal').modal('show')
-	       $('#addModal').modal('show')
+	       <!--$('#addModal').modal('show')-->  <!-- （点击更新按钮弹出增加服务器对话框）修改注释掉 by zhouzx -->
     		$('#upexpire').datetimepicker({
     		minView: "month", //选择日期后，不会再跳转去选择时分秒
 　　		format: "yyyy-mm-dd", //选择日期后，文本框显示的日期格式

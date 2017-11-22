@@ -1,5 +1,5 @@
 #coding:utf-8
-from __future__ import unicode_literals                                                                                                                      
+from __future__ import unicode_literals   # __future__模块，把下一个新版本的特性导入到当前版本
 from flask import Flask, render_template,session,redirect,request,url_for
 from  . import app  
 import requests,json

@@ -1,4 +1,5 @@
-from flask import Flask                                                                    
+# coding: utf-8
+from flask import Flask            #  WSGI 应用程序
 from flask_jsonrpc import JSONRPC
 import sys
 

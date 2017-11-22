@@ -27,9 +27,9 @@ def write_log(loggername):
 
 
 def get_validate(username, uid, role, fix_pwd):
-    t = int(time.time())
+    t = int(time.time())        # 用于获取当前时间戳;时间戳单位最适于做日期运算
     validate_key = hashlib.md5('%s%s%s' % (username, t, fix_pwd)).hexdigest() 
-    return base64.b64encode('%s|%s|%s|%s|%s' % (username, t, uid, role, validate_key)).strip()
+    return base64.b64encode('%s|%s|%s|%s|%s' % (username, t, uid, role, validate_key)).strip()  # 默认删除空白符（包括'\n', '\r',  '\t',  ' ')
 
 def validate(key, fix_pwd):
     t = int(time.time())

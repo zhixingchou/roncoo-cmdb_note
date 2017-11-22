@@ -11,7 +11,7 @@ def login():
         try:
             username = request.args.get('username', None)
             passwd = request.args.get('passwd', None)
-            passwd = hashlib.md5(passwd).hexdigest()	
+            passwd = hashlib.md5(passwd).hexdigest()	# 把任意长度的数据转换为一个长度固定的数据串（通常用16进制的字符串表示）
             if not (username and passwd):
                 return json.dumps({'code': 1, 'errmsg': "需要输入用户名和密码"})
             result = app.config['cursor'].get_one_result('user', ['id', 'username', 'password', 'r_id', 'is_lock'], {'username': username}) 
