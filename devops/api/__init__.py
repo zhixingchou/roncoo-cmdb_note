@@ -4,7 +4,7 @@ from flask_jsonrpc import JSONRPC
 import sys
 
 reload(sys)
-sys.setdefaultencoding('utf-8')
+sys.setdefaultencoding('utf-8')         # 设置默认encoding方式
 
 app = Flask(__name__)
 jsonrpc = JSONRPC(app, '/api')

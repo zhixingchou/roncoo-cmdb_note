@@ -524,17 +524,17 @@ $("#addBtn").on('click',function(){
 
 
 
-$("#updatezabbix").on('click',function(){
+$("#updatezabbix").on('click',function(){       <!-- jquery on函数 -->
     $('#update').modal('show')
     zabbix_group = $("#zabbix_group");
     sync_host_list = $("#host_list");
     var url = "/listapi?method=zabbix"
-    $.getJSON('/listapi?method=zbhost', function(data){
-                sync_host_list.empty();
+    $.getJSON('/listapi?method=zbhost', function(data){     <!-- 回调函数 -->
+                sync_host_list.empty();         <!-- empty() 方法从被选元素移除所有内容，包括所有文本和子节点。-->
                 server_list = JSON.parse(data['result']);
 		if(server_list['code'] == 0){
 		console.log(server_list['result']) 
-                $.each(server_list['result'], function(n, obj){
+                $.each(server_list['result'], function(n, obj){         <!-- $.each()函数和$(selector).each()不一样。$.each()函数可以用来遍历任何一个集合，不管是一个JavaScript对象或者是一个数组 （http://zxc8899.iteye.com/blog/1558298） -->
                     html = '<div class="checkbox">';
                     html += '<label>';
                     html += '<input type="checkbox" name="zabbix_hosts" class="zabbix_hosts" value="'+obj.ip+'">';
@@ -550,7 +550,9 @@ $("#updatezabbix").on('click',function(){
 		}
 
             });
-    $.getJSON(url,function(data){ 
+    $.getJSON(url,function(data){
+                // （点击【同步ZABBIX】group重复一次）add by zhouzx
+                zabbix_group.empty();
                 data = JSON.parse(data['result']);	
 		if(data['code'] == 0){
                 $.each(data['result'], function(n, obj){
@@ -564,7 +566,7 @@ $("#updatezabbix").on('click',function(){
           })
      $("#create").click(function(){
             hostids = new Array();
-            $("input[name='zabbix_hosts']:checked").each(function (i, n) {
+            $("input[name='zabbix_hosts']:checked").each(function (i, n) {      <!-- jquery 遍历checkbox -->
                 hostids[i] = n.value
             });
             zabbix_groupid = $("#zabbix_group").val();	   

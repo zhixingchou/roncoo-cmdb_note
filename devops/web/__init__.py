@@ -2,7 +2,7 @@
 from flask import Flask
 import sys
 reload(sys)
-sys.setdefaultencoding('utf-8')
+sys.setdefaultencoding('utf-8')         # 设置默认encoding方式
 # 创建一个app实例
 app = Flask(__name__)
 

@@ -20,6 +20,7 @@ cobbler_config = util.get_config(service_conf, 'cobbler')
 zabbix_config = util.get_config(service_conf, 'zabbix')
 
 
+# 直接配置的两个方式
 
 #将参数追加到app.config字典中，就可以随意调用了
 app.config.update(config)

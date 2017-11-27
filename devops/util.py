@@ -15,7 +15,7 @@ def get_config(service_conf, section=''):
 
     conf_items = dict(config.items('common')) if config.has_section('common') else {}
     if section and config.has_section(section):
-       conf_items.update(config.items(section))
+       conf_items.update(config.items(section))     # 把section的键值添加到dict
     return conf_items
 
 def write_log(loggername):

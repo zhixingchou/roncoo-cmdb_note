@@ -4,6 +4,8 @@ import MySQLdb as mysql
 
 class Cursor():
     def __init__(self, config):
+        # by zhouzx -- k[6:] 获取字符串k第6位之后；config[k] 获取mysql_开头的键值
+        # dict构建字典
         self.config = dict([(k[6:], config[k]) for k in config if k.startswith('mysql_')])
         if 'port' in self.config:
             self.config['port'] = int(self.config['port'])
@@ -13,7 +15,7 @@ class Cursor():
     def _connect_db(self):
         self.db = mysql.connect(**self.config)
         self.db.autocommit(True)
-        self.cur = self.db.cursor()
+        self.cur = self.db.cursor()     # 游标指针；连接成功之后，开始操作。注意：MySQLdb用游标（指针）cursor的方式操作数据库
 
     def _close_db(self):
         self.cur.close()

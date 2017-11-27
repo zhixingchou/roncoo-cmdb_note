@@ -1,5 +1,5 @@
 #coding:utf8
-from . import app , jsonrpc
+from . import app , jsonrpc         # 导入flask实例
 import util
 from zabbix_client import ZabbixServerProxy
 import json, traceback
