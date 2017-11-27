@@ -11,7 +11,7 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('passwd')
-        url = "http://%s/api/login?username=%s&passwd=%s" % (app.config['api_host'],username,password)
+        url = "http://%s/api/login?username=%s&passwd=%s" % (app.config['api_host'],username,password)      # url映射到api/login.py -- def login()
         r = requests.get(url, headers=headers)      #请求API验证用户，并获取token
         result = json.loads(r.content)
         if result['code'] == 0:
