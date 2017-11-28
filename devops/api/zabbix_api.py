@@ -21,7 +21,7 @@ class Zabbix():
         return ret
 
     def get_interface(self, hostids):
-        data = self.zb.hostinterface.get(hostids=hostids, output=['hostid','ip'])
+        data = self.zb.hostinterface.get(hostids=hostids, output=['hostid','ip'])   # hostids=10119 => [{u'interfaceid': u'13', u'hostid': u'10119', u'ip': u'192.168.2.115'}]
         ret = {}
         for d in data:
             ret[d['hostid']] = d['ip']
@@ -123,12 +123,12 @@ def init_cmdb():
 def init_zabbix():
     try:
         #第一步 取出所有host,要ip,host,id
-        zb_hosts = app.config['zabbix'].get_hosts()
+        zb_hosts = app.config['zabbix'].get_hosts()     # [{u'host': u'Zabbix server', u'hostid': u'10084'},……]
         zb_hosts_interface = app.config['zabbix'].get_interface([z['hostid'] for z in zb_hosts])
 	data = []
 	ret = []
         for h in zb_hosts: 
-            h['ip'] = zb_hosts_interface[h['hostid']]
+            h['ip'] = zb_hosts_interface[h['hostid']]       # 增加ip key值？
             data.append(h)
     ###数据插入数据库
         for i in data:

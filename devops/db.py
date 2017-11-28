@@ -61,15 +61,15 @@ class Cursor():
 	    util.write_log('api').error("Execute '%s' error: %s" % (sql, traceback.format_exc()))
 
     def _select_sql(self, table_name, fields, where=None, order=None, asc_order=True, limit=None):
-        if isinstance(where, dict) and where:
+        if isinstance(where, dict) and where:       # isinstance() 函数来判断一个对象是否是一个已知的类型，类似 type()。
             conditions = []
-            for k, v in where.items():	
+            for k, v in where.items():	    # items() 函数以列表返回可遍历的(键, 值) 元组数组。{"id":1} => [("id", 1)]
                 if isinstance(v, list):
                     conditions.append("%s IN (%s)" % (k, ','.join(v)))
                 elif isinstance(v, str) or isinstance(v, unicode):
                     conditions.append("%s='%s'" % (k, v))
                 elif isinstance(v, int):
-                    conditions.append("%s=%s" % (k, v))
+                    conditions.append("%s=%s" % (k, v))     # append() 方法用于在列表末尾添加新的对象。
 	    
             sql = "SELECT %s FROM %s WHERE %s" % (','.join(fields), table_name, ' AND '.join(conditions)) 
         elif not where:
@@ -99,7 +99,14 @@ class Cursor():
         try:
             sql = self._select_sql(table_name, fields, where, order, asc_order, limit)
             self._execute(sql)
-            result_sets = self._fetchall()
+            result_sets = self._fetchall()      # ((32L, 'met-ops-dk', '192.168.2.225', 1L, ……), (33L, 'appserver1.eport.sh.cn', '192.168.2.130', 0L, ……), ……)
+            # default if x is y else z
+            # for i, k in enumerate(value)
+                # =>
+                # 0 id
+                # 1 hostname
+                # ……
+            # row[i] for row in result_sets
             return [dict([(k, '' if row[i] is None else row[i]) for i,k in enumerate(fields)]) for row in result_sets]
         except:
             util.write_log('api').error("Execute '%s' error: %s" % (sql, traceback.format_exc()))
